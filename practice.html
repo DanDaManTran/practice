@@ -1,97 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Practice</title>
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 </head>
+
 <body>
-	<script type="text/javascript">
-		
-		var str = "R5, R4, R2, L3, R1, R1, L4, L5, R3, L1, L1, R4, L2, R1, R4, R4, L2, L2, R4, L4, R1, R3, L3, L1, L2, R1, R5, L5, L1, L1, R3, R5, L1, R4, L5, R5, R1, L185, R4, L1, R51, R3, L2, R78, R1, L4, R188, R1, L5, R5, R2, R3, L5, R3, R4, L1, R2, R2, L4, L4, L5, R5, R4, L4, R2, L5, R2, L1, L4, R4, L4, R2, L3, L4, R2, L3, R3, R2, L2, L3, R4, R3, R1, L4, L2, L5, R4, R4, L1, R1, L5, L1, R3, R1, L2, R1, R1, R3, L4, L1, L3, R2, R4, R2, L2, R1, L5, R3, L3, R3, L1, R4, L3, L3, R4, L2, L1, L3, R2, R3, L2, L1, R4, L3, L5, L2, L4, R1, L4, L4, R3, R5, L4, L1, L1, R4, L2, R5, R1, R1, R2, R1, R5, L1, L3, L5, R2";
-		var arrayDir = str.split(", ");
 
-		var compass = ["n","e","s","w"];
-		var compassDist = [0, 0, 0, 0];
-		var compCounter = 0;
-
-		var direction = [];
-		var distance = [];
-
-		for(var i = 0; i<arrayDir.length; i++){
-			// finding the directions of each turns and placing it into the direction array
-			if(arrayDir[i].charAt(0)==="R"){
-				compCounter++;
-				if(compCounter===4){
-					compCounter=0;
-				}
-				direction.push(compass[compCounter]);
-			} else{
-				compCounter--;
-				if(compCounter===-1){
-					compCounter=3;
-				}
-				direction.push(compass[compCounter]);
-			}
-
-			//finding the distance if each turn and pushing it into the distance array
-			distance.push(arrayDir[i].substring(1));
-
-		}
-
-		// adding all the NWES distances together to find the difference between NS and WE so we can find the total distances
-		for(var i = 0; i<direction.length; i++){
-			if(direction[i]==="e"){
-				compassDist[1]+=parseInt(distance[i]);
-			} else if(direction[i]==="w"){
-				compassDist[3]+=parseInt(distance[i]);
-			} else if(direction[i]==="n"){
-				compassDist[0]+=parseInt(distance[i]);
-			} else {
-				compassDist[2]+=parseInt(distance[i]);
-			}
-		}
-		var ns = Math.abs(compassDist[0]-compassDist[2]);
-		var we = Math.abs(compassDist[1]-compassDist[3]);
-
-		var nw = [0, 0];
-		var eachNW = [];
-		var north = [];
-		var west = [];
-		
-		//adding each location for each step into eachNW
-		for(var i = 0; i<direction.length; i++){
-			if(direction[i]==="e"){
-				for(var j = nw[1]; j<parseInt(distance[i]); j++){
-					nw[1]-=1;
-					west.push(nw[1]);
-					north.push(nw[0]);
-				}
-			} else if(direction[i]==="w"){
-				// nw[1]+=parseInt(distance[i]);
-				// west.push(nw[1]);
-				// north.push(nw[0]);
-			} else if(direction[i]==="n"){
-				// nw[0]+=parseInt(distance[i]);
-				// north.push(nw[0]);
-				// west.push(nw[1]);
-			} else {
-				// nw[0]-=parseInt(distance[i]);
-				// north.push(nw[0]);
-				// west.push(nw[1]);
-			}
-			console.log(nw);
-		}
-
-	
-
-		//going through each eachNW to find the common location
-		for(var i = 0; i<north.length; i++){
-			for(var j = i-1; j>-1; j--){
-				if(north[i]==north[j]){
-					
-				}
-			}
-		}
-
-	</script>
 </body>
+
+<script type="text/javascript">
+
+
+var lat = "";
+var long = "";
+
+
+$("document").ready(function(){
+
+
+	x = navigator.geolocation;
+	x.getCurrentPosition(success, error);
+
+	function success(position){
+		lat = position.coords.latitude;
+		long = position.coords.longitude;
+
+	}
+
+	function error(){
+
+	}
+
+		console.log(lat);
+		console.log(long);
+});
+</script>
 </html>

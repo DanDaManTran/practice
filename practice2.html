@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+<p>
+</body>
+
+<script type="text/javascript">
+
+var flightResult = {
+    "OriginLocation": "CLT",
+    "FareInfo": [{
+        "CurrencyCode": "USD",
+        "LowestNonStopFare": {
+            "AirlineCodes": ["AA"],
+            "Fare": 190.7
+        },
+        "LowestFare": {
+            "AirlineCodes": ["UA", "AA"],
+            "Fare": 181.2
+        },
+        "DestinationLocation": "BOS",
+        "DepartureDateTime": "2015-12-15T00:00:00",
+        "ReturnDateTime": "2015-12-25T00:00:00",
+        "Links": [{
+            "rel": "shop",
+            "href": "https://api.sabre.com/v1/shop/flights?origin=CLT&destination=BOS&departuredate=2015-12-15&returndate=2015-12-25&pointofsalecountry=US"
+        }]
+    }, {
+        "CurrencyCode": "USD",
+        "LowestNonStopFare": {
+            "AirlineCodes": ["AA"],
+            "Fare": 219.7
+        },
+        "LowestFare": {
+            "AirlineCodes": ["AA"],
+            "Fare": 219.7
+        },
+        "DestinationLocation": "DFW",
+        "DepartureDateTime": "2015-12-15T00:00:00",
+        "ReturnDateTime": "2015-12-25T00:00:00",
+        "Links": [{
+            "rel": "shop",
+            "href": "https://api.sabre.com/v1/shop/flights?origin=CLT&destination=DFW&departuredate=2015-12-15&returndate=2015-12-25&pointofsalecountry=US"
+        }]
+    }, {
+        "CurrencyCode": "USD",
+        "LowestNonStopFare": {
+            "AirlineCodes": ["AA"],
+            "Fare": 364.7
+        },
+        "LowestFare": {
+            "AirlineCodes": ["DL"],
+            "Fare": 181.7
+        },
+        "DestinationLocation": "PHL",
+        "DepartureDateTime": "2015-12-15T00:00:00",
+        "ReturnDateTime": "2015-12-25T00:00:00",
+        "Links": [{
+            "rel": "shop",
+            "href": "https://api.sabre.com/v1/shop/flights?origin=CLT&destination=PHL&departuredate=2015-12-15&returndate=2015-12-25&pointofsalecountry=US"
+        }]
+    }, {
+        "CurrencyCode": "USD",
+        "LowestNonStopFare": {
+            "AirlineCodes": ["AA"],
+            "Fare": 364.7
+        },
+        "LowestFare": {
+            "AirlineCodes": ["DL"],
+            "Fare": 181.7
+        },
+        "DestinationLocation": "PHL",
+        "DepartureDateTime": "2015-12-15T00:00:00",
+        "ReturnDateTime": "2015-12-25T00:00:00",
+        "Links": [{
+            "rel": "shop",
+            "href": "https://api.sabre.com/v1/shop/flights?origin=CLT&destination=PHL&departuredate=2015-12-15&returndate=2015-12-25&pointofsalecountry=US"
+        }]
+    }, {
+        "CurrencyCode": "USD",
+        "LowestNonStopFare": {
+            "AirlineCodes": ["AA"],
+            "Fare": 364.7
+        },
+        "LowestFare": {
+            "AirlineCodes": ["DL"],
+            "Fare": 181.7
+        },
+        "DestinationLocation": "HOU",
+        "DepartureDateTime": "2015-12-15T00:00:00",
+        "ReturnDateTime": "2015-12-25T00:00:00",
+        "Links": [{
+            "rel": "shop",
+            "href": "https://api.sabre.com/v1/shop/flights?origin=CLT&destination=PHL&departuredate=2015-12-15&returndate=2015-12-25&pointofsalecountry=US"
+        }]
+    }, {
+        "CurrencyCode": "USD",
+        "LowestNonStopFare": {
+            "AirlineCodes": ["AA"],
+            "Fare": 364.7
+        },
+        "LowestFare": {
+            "AirlineCodes": ["DL"],
+            "Fare": 181.7
+        },
+        "DestinationLocation": "MZC",
+        "DepartureDateTime": "2015-12-15T00:00:00",
+        "ReturnDateTime": "2015-12-25T00:00:00",
+        "Links": [{
+            "rel": "shop",
+            "href": "https://api.sabre.com/v1/shop/flights?origin=CLT&destination=PHL&departuredate=2015-12-15&returndate=2015-12-25&pointofsalecountry=US"
+        }]
+    }, {
+        "CurrencyCode": "USD",
+        "LowestNonStopFare": {
+            "AirlineCodes": ["AA"],
+            "Fare": 364.7
+        },
+        "LowestFare": {
+            "AirlineCodes": ["DL"],
+            "Fare": 181.7
+        },
+        "DestinationLocation": "ASL",
+        "DepartureDateTime": "2015-12-15T00:00:00",
+        "ReturnDateTime": "2015-12-25T00:00:00",
+        "Links": [{
+            "rel": "shop",
+            "href": "https://api.sabre.com/v1/shop/flights?origin=CLT&destination=PHL&departuredate=2015-12-15&returndate=2015-12-25&pointofsalecountry=US"
+        }]
+    }],
+    "Links": [{
+        "rel": "self",
+        "href": "https://api.sabre.com/v2/shop/flights/fares?origin=CLT&departuredate=2015-12-15&returndate=2015-12-25&maxfare=220"
+    }, {
+        "rel": "linkTemplate",
+        "href": "https://api.sabre.com/v2/shop/flights/fares?origin=<origin>&departuredate=<departuredate>&returndate=<returndate>&location=<location>&theme=<theme>&minfare=<minfare>&maxfare=<maxfare>&lengthofstay=<lengthofstay>&earliestdeparturedate=<earliestdeparturedate>&latestdeparturedate=<latestdeparturedate>&pointofsalecountry=<pointofsalecountry>&region=<region>&topdestinations=<topdestinations>&pricepermile=<pricepermile>"
+    }]
+};
+var filterResults = [];
+for(var i = 0; i<flightResult.FareInfo.length; i++){
+	var ranCity = flightResult.FareInfo[i].DestinationLocation;
+	var dTime = flightResult.FareInfo[i].DepartureDateTime;
+	var rTime = flightResult.FareInfo[i].ReturnDateTime;
+	var href = flightResult.FareInfo[i].Links[0].href;
+	var notCopy = true;
+
+	for(var j = 0; j<filterResults.length; j++){
+		if(filterResults[j].city===ranCity){
+			notCopy = false;
+		}
+	}
+	
+	if(notCopy){
+		filterResults.push({city: ranCity, depatureTime: dTime, returnTime: rTime, link: href});
+	} 
+}
+
+</script>
+</html>
